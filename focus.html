@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Kurso – Focus</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500&display=swap" rel="stylesheet">
+  <meta name="theme-color" content="#1c1c1c">
+  <script src="theme.js"></script>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app">
+    <aside class="side">
+      <a class="side__logo" href="guest.html"><img src="kurso.png" alt="Kurso" width="273" height="56"></a>
+      <nav class="side__nav" aria-label="Navigation principale">
+        <a href="guest.html">Accueil</a>
+        <a href="cours.html">Mes cours</a>
+        <a href="importer.html">Importer</a>
+        <a href="revisions.html">Révisions</a>
+        <a href="reviser.html">À réviser</a>
+        <a href="agenda.html">Agenda</a>
+        <a href="focus.html" aria-current="page">Focus</a>
+        <a href="tableau.html">Tableau</a>
+        <a href="noeuds.html">Nœuds</a>
+        <a href="reglages.html">Réglages</a>
+      </nav>
+      <div class="side__foot">
+        <span>Mode invité</span>
+        <a href="login.html">Se déconnecter</a>
+      </div>
+    </aside>
+
+    <main class="main">
+      <header class="page-head">
+        <div>
+          <h1>Focus</h1>
+          <p class="lead">Un minuteur de travail (méthode Pomodoro) relié à tes matières. Chaque séance terminée compte dans ta série et tes statistiques.</p>
+        </div>
+      </header>
+      <div class="focus">
+        <section class="timer" aria-label="Minuteur">
+          <p class="timer__phase" id="phase" role="status"></p>
+          <p class="timer__time" id="time" aria-live="off">25:00</p>
+          <div class="timer__bar"><span id="bar"></span></div>
+          <div class="timer__actions">
+            <button class="btn" id="go" type="button">Démarrer</button>
+            <button class="btn btn--ghost" id="reset" type="button">Réinitialiser</button>
+            <button class="btn btn--ghost" id="finish" type="button" hidden>Terminer et enregistrer</button>
+          </div>
+          <div class="row2 timer__opts">
+            <label class="field"><span>Mode</span><select class="select" id="mode"></select></label>
+            <label class="field"><span>Matière travaillée</span><select class="select" id="f-subject"></select></label>
+          </div>
+          <label class="field" id="custom-wrap" hidden style="max-width:220px"><span>Durée libre (minutes)</span><input class="input" id="custom" type="number" min="1" max="240" value="30"></label>
+          <p class="note" id="cycles"></p>
+        </section>
+        <section class="panel" aria-label="Statistiques">
+          <div class="tiles tiles--2" id="f-tiles"></div>
+          <h2 class="section-title">7 derniers jours</h2>
+          <div id="f-chart"></div>
+          <h2 class="section-title">Par matière (7 jours)</h2>
+          <div id="f-subjects"></div>
+        </section>
+      </div>
+    </main>
+  </div>
+
+  <script src="core.js"></script>
+  <script src="study.js"></script>
+  <script src="focus.js"></script>
+</body>
+</html>

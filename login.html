@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Kurso – Log In</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500&display=swap" rel="stylesheet">
+  <meta name="theme-color" content="#1c1c1c">
+  <script src="theme.js"></script>
+  <link rel="stylesheet" href="login.css">
+</head>
+<body>
+  <main class="login">
+    <img class="login__logo" src="kurso.png" alt="Kurso">
+
+    <div class="panel">
+      <!-- Connexion classique : vérifiée côté navigateur (auth.js) -->
+      <form class="form is-disabled" id="login-form" novalidate aria-disabled="true">
+        <div class="divider"><span>Log In</span></div>
+
+        <div class="field">
+          <input id="identifier" name="identifier" type="text" disabled autocomplete="username" placeholder=" ">
+          <label for="identifier">Identifier</label>
+        </div>
+
+        <div class="field">
+          <input id="password" name="password" type="password" disabled autocomplete="current-password" placeholder=" ">
+          <label for="password">Password</label>
+          <button class="field__toggle" type="button" disabled aria-label="Afficher le mot de passe" aria-pressed="false">
+            <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12z"/>
+              <circle cx="12" cy="12" r="3"/>
+              <path class="slash" d="M3 3l18 18"/>
+            </svg>
+          </button>
+        </div>
+
+        <p class="error" id="login-error" role="alert" hidden>Identifiant ou mot de passe incorrect.</p>
+
+        <button class="btn" type="submit" disabled>Log in account</button>
+
+        <p class="help">
+          Create your account by contacting support<br>
+          <a href="mailto:support@kurso.fr">support@kurso.fr</a>
+        </p>
+      </form>
+
+      <!-- Accès invité -->
+      <div class="guest">
+        <div class="divider"><span>Guest</span></div>
+        <a class="btn btn--link" id="guest-link" href="guest.html">Guest login</a>
+      </div>
+    </div>
+  </main>
+
+  <!-- Popup : connexion en développement -->
+  <div class="toast" id="toast" role="status" aria-live="polite" hidden>
+    <span>Connexion en développement. Utilise l'accès invité en attendant.</span>
+    <button class="toast__close" type="button" aria-label="Fermer">&times;</button>
+  </div>
+
+  <script>
+    const form = document.getElementById('login-form');
+    const idInput = document.getElementById('identifier');
+    const err = document.getElementById('login-error');
+
+    // Déjà connecté : on va directement à l'accueil
+    if (KursoAuth.getSession()) location.replace('guest.html');
+
+    form.addEventListener('submit', async e => {
+      e.preventDefault();
+      err.hidden = true;
+      const ok = await KursoAuth.login(idInput.value, document.getElementById('password').value);
+      if (ok) location.href = 'guest.html';
+      else err.hidden = false;
+    });
+
+    // Popup « en développement » (bas à droite)
+    const toast = document.getElementById('toast');
+    let toastTimer;
+    const showToast = () => {
+      toast.hidden = false;
+      requestAnimationFrame(() => toast.classList.add('is-visible'));
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(hideToast, 6000);
+    };
+    const hideToast = () => {
+      toast.classList.remove('is-visible');
+      setTimeout(() => { toast.hidden = true; }, 200);
+    };
+    toast.querySelector('.toast__close').addEventListener('click', hideToast);
+    showToast();
+    form.addEventListener('click', showToast);
+
+    // Accès invité
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    let leaving = false;
+    document.getElementById('guest-link').addEventListener('click', e => {
+      KursoAuth.loginGuest();
+      if (e.metaKey || e.ctrlKey || e.shiftKey || e.button !== 0) return;
+      e.preventDefault();
+      if (leaving) return;
+      if (reduceMotion) { location.href = 'guest.html'; return; }
+      leaving = true;
+      hideToast();
+      document.querySelector('.login').classList.add('is-leaving');
+      setTimeout(() => { location.href = 'guest.html'; }, 1000);
+    });
+
+    // Afficher / masquer le mot de passe
+    const toggle = document.querySelector('.field__toggle');
+    const pwd = document.getElementById('password');
+    toggle.addEventListener('click', () => {
+      const show = pwd.type === 'password';
+      pwd.type = show ? 'text' : 'password';
+      toggle.setAttribute('aria-pressed', show);
+      toggle.classList.toggle('is-visible', show);
+    });
+  </script>
+</body>
+</html>

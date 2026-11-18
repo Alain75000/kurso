@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Kurso – Importer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500&display=swap" rel="stylesheet">
+  <meta name="theme-color" content="#1c1c1c">
+  <script src="theme.js"></script>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app">
+    <aside class="side">
+      <a class="side__logo" href="guest.html"><img src="kurso.png" alt="Kurso" width="273" height="56"></a>
+      <nav class="side__nav" aria-label="Navigation principale">
+        <a href="guest.html">Accueil</a>
+        <a href="cours.html">Mes cours</a>
+        <a href="importer.html" aria-current="page">Importer</a>
+        <a href="revisions.html">Révisions</a>
+        <a href="reviser.html">À réviser</a>
+        <a href="agenda.html">Agenda</a>
+        <a href="focus.html">Focus</a>
+        <a href="tableau.html">Tableau</a>
+        <a href="noeuds.html">Nœuds</a>
+        <a href="reglages.html">Réglages</a>
+      </nav>
+      <div class="side__foot">
+        <span>Mode invité</span>
+        <a href="login.html">Se déconnecter</a>
+      </div>
+    </aside>
+
+    <main class="main">
+      <header class="page-head">
+        <div>
+          <h1>Importer un cours</h1>
+          <p class="lead">Ajoute tes cours en version numérique : photo ou scan, PDF, ou fichier texte. Une fenêtre s’ouvre ensuite pour renseigner les informations de chaque fichier.</p>
+        </div>
+      </header>
+
+      <label class="field" style="max-width:320px">
+        <span>Matière proposée par défaut</span>
+        <select class="select" id="default-subject"></select>
+      </label>
+
+      <label class="drop" id="dropzone">
+        <input class="sr-only" id="file-input" type="file" multiple accept=".png,.pdf,.txt,image/png,application/pdf,text/plain">
+        <span class="drop__title">Dépose tes fichiers ici ou clique pour les choisir</span>
+        <span class="drop__hint">PNG, PDF ou TXT, 25 Mo maximum par fichier</span>
+      </label>
+
+      <div class="status" id="status" role="status" aria-live="polite"></div>
+
+      <h2 class="section-title">Ajoutés récemment</h2>
+      <div id="recent"></div>
+    </main>
+  </div>
+
+  <script src="core.js"></script>
+  <script src="study.js"></script>
+  <script src="import.js"></script>
+</body>
+</html>

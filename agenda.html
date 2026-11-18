@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Kurso – Agenda</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500&display=swap" rel="stylesheet">
+  <meta name="theme-color" content="#1c1c1c">
+  <script src="theme.js"></script>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app">
+    <aside class="side">
+      <a class="side__logo" href="guest.html"><img src="kurso.png" alt="Kurso" width="273" height="56"></a>
+      <nav class="side__nav" aria-label="Navigation principale">
+        <a href="guest.html">Accueil</a>
+        <a href="cours.html">Mes cours</a>
+        <a href="importer.html">Importer</a>
+        <a href="revisions.html">Révisions</a>
+        <a href="reviser.html">À réviser</a>
+        <a href="agenda.html" aria-current="page">Agenda</a>
+        <a href="focus.html">Focus</a>
+        <a href="tableau.html">Tableau</a>
+        <a href="noeuds.html">Nœuds</a>
+        <a href="reglages.html">Réglages</a>
+      </nav>
+      <div class="side__foot">
+        <span>Mode invité</span>
+        <a href="login.html">Se déconnecter</a>
+      </div>
+    </aside>
+
+    <main class="main">
+      <header class="page-head">
+        <div>
+          <h1>Agenda</h1>
+          <p class="lead">Note tes devoirs, contrôles et examens, relie-les à une fiche de révision et suis le compte à rebours.</p>
+        </div>
+      </header>
+      <form class="panel" id="task-form" autocomplete="off">
+        <div class="row2">
+          <label class="field"><span>Titre</span><input class="input" id="t-title" type="text" required maxlength="120" placeholder="Ex. Contrôle sur les fonctions affines"></label>
+          <label class="field"><span>Date</span><input class="input" id="t-date" type="date" required></label>
+        </div>
+        <div class="row3">
+          <label class="field"><span>Type</span><select class="select" id="t-type"></select></label>
+          <label class="field"><span>Matière</span><select class="select" id="t-subject"></select></label>
+          <label class="field"><span>Fiche à réviser (facultatif)</span><select class="select" id="t-fiche"></select></label>
+        </div>
+        <div class="dlg__actions"><button class="btn btn--sm" type="submit">Ajouter à l’agenda</button></div>
+      </form>
+      <div class="toolbar" style="margin-top:24px">
+        <label class="check" style="margin:0"><input type="checkbox" id="show-done"><span>Afficher les tâches terminées</span></label>
+      </div>
+      <div id="tasks"></div>
+    </main>
+  </div>
+
+  <script src="core.js"></script>
+  <script src="study.js"></script>
+  <script src="agenda.js"></script>
+</body>
+</html>

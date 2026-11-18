@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Kurso – Fiche de révision</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500&display=swap" rel="stylesheet">
+  <meta name="theme-color" content="#1c1c1c">
+  <script src="theme.js"></script>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app">
+    <aside class="side">
+      <a class="side__logo" href="guest.html"><img src="kurso.png" alt="Kurso" width="273" height="56"></a>
+      <nav class="side__nav" aria-label="Navigation principale">
+        <a href="guest.html">Accueil</a>
+        <a href="cours.html">Mes cours</a>
+        <a href="importer.html">Importer</a>
+        <a href="revisions.html" aria-current="page">Révisions</a>
+        <a href="reviser.html">À réviser</a>
+        <a href="agenda.html">Agenda</a>
+        <a href="focus.html">Focus</a>
+        <a href="tableau.html">Tableau</a>
+        <a href="noeuds.html">Nœuds</a>
+        <a href="reglages.html">Réglages</a>
+      </nav>
+      <div class="side__foot">
+        <span>Mode invité</span>
+        <a href="login.html">Se déconnecter</a>
+      </div>
+    </aside>
+
+    <main class="main">
+      <a class="back" href="revisions.html">Retour aux fiches</a>
+
+      <div id="missing" class="empty" hidden>
+        Cette fiche est introuvable. <a href="revisions.html">Voir toutes les fiches</a>
+      </div>
+
+      <div id="fiche" hidden>
+        <input class="title-input" id="f-title" type="text" maxlength="120" aria-label="Titre de la fiche" autocomplete="off">
+        <div class="meta">
+          <select class="select" id="f-subject" aria-label="Matière"></select>
+          <button class="btn btn--ghost btn--sm" id="f-course" type="button" hidden></button>
+          <span class="saved" id="saved" role="status"></span>
+        </div>
+        <div class="tools">
+          <button class="btn btn--ghost btn--sm" id="export" type="button">Exporter en .txt</button>
+          <button class="btn btn--ghost btn--sm" id="print" type="button">Imprimer</button>
+          <button class="btn btn--danger btn--sm" id="delete" type="button">Supprimer la fiche</button>
+        </div>
+
+        <div class="tabs" role="tablist" aria-label="Affichage de la fiche">
+          <button class="tab" role="tab" id="tab-sheet" aria-controls="panel-sheet" aria-selected="true" type="button">Fiche</button>
+          <button class="tab" role="tab" id="tab-cards" aria-controls="panel-cards" aria-selected="false" type="button">Cartes</button>
+          <button class="tab" role="tab" id="tab-quiz" aria-controls="panel-quiz" aria-selected="false" type="button">Quiz</button>
+        </div>
+
+        <section id="panel-sheet" role="tabpanel" aria-labelledby="tab-sheet">
+          <div id="sheet"></div>
+        </section>
+        <section id="panel-cards" role="tabpanel" aria-labelledby="tab-cards" hidden>
+          <div id="deck"></div>
+        </section>
+        <section id="panel-quiz" role="tabpanel" aria-labelledby="tab-quiz" hidden>
+          <div id="quiz"></div>
+        </section>
+      </div>
+    </main>
+  </div>
+
+  <script src="core.js"></script>
+  <script src="study.js"></script>
+  <script src="fiche.js"></script>
+</body>
+</html>

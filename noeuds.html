@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Kurso – Nœuds</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500&display=swap" rel="stylesheet">
+  <meta name="theme-color" content="#1c1c1c">
+  <script src="theme.js"></script>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app">
+    <aside class="side">
+      <a class="side__logo" href="guest.html"><img src="kurso.png" alt="Kurso" width="273" height="56"></a>
+      <nav class="side__nav" aria-label="Navigation principale">
+        <a href="guest.html">Accueil</a>
+        <a href="cours.html">Mes cours</a>
+        <a href="importer.html">Importer</a>
+        <a href="revisions.html">Révisions</a>
+        <a href="reviser.html">À réviser</a>
+        <a href="agenda.html">Agenda</a>
+        <a href="focus.html">Focus</a>
+        <a href="tableau.html">Tableau</a>
+        <a href="noeuds.html" aria-current="page">Nœuds</a>
+        <a href="reglages.html">Réglages</a>
+      </nav>
+      <div class="side__foot">
+        <span>Mode invité</span>
+        <a href="login.html">Se déconnecter</a>
+      </div>
+    </aside>
+
+    <main class="main main--wide">
+      <header class="page-head">
+        <div>
+          <h1>Nœuds</h1>
+          <p class="lead">Même principe que le tableau, mais avec des nœuds comme dans Blender : relie un fichier à un autre, à un gros titre ou à une note en tirant un fil d’un point à l’autre. Maintiens le clic gauche sur le fond pour te déplacer, molette pour zoomer. Tout reste enregistré dans ce navigateur.</p>
+        </div>
+        <div class="page-actions">
+          <button class="btn btn--ghost" id="new-graph" type="button">Nouveau schéma</button>
+        </div>
+      </header>
+
+      <div class="chips" id="graphs" role="group" aria-label="Mes schémas"></div>
+
+      <div class="stage" id="stage">
+        <div class="toolbar tb">
+          <label class="btn btn--sm">
+            Ajouter des fichiers
+            <input class="sr-only" id="file-input" type="file" multiple accept=".pdf,.png,.jpg,.jpeg,.docx,.xlsx,.pptx,.one">
+          </label>
+          <button class="btn btn--ghost btn--sm" id="add-title" type="button">Ajouter Titre</button>
+          <button class="btn btn--ghost btn--sm" id="add-note" type="button">Ajouter Note</button>
+          <span class="spacer"></span>
+          <span class="note" id="zoom-level" aria-live="off">100 %</span>
+          <button class="btn btn--ghost btn--sm" id="fit" type="button">Tout afficher</button>
+          <button class="btn btn--ghost btn--sm" id="full-graph" type="button" aria-pressed="false">⤢ Plein écran</button>
+          <button class="btn btn--ghost btn--sm" id="lock-graph" type="button" aria-pressed="false">Verrouiller</button>
+          <button class="btn btn--ghost btn--sm" id="rename-graph" type="button">Renommer</button>
+          <button class="btn btn--danger btn--sm" id="del-graph" type="button">Supprimer</button>
+        </div>
+
+        <div class="board-wrap">
+          <div class="nview" id="view" tabindex="0" role="region" aria-label="Schéma de nœuds : maintiens le clic gauche sur le fond pour te déplacer, molette pour zoomer">
+            <div class="nworld" id="world">
+              <svg class="nedges" id="edges" width="1" height="1" aria-hidden="true"></svg>
+              <div id="nodes"></div>
+            </div>
+          </div>
+          <p class="board__hint" id="hint">Ajoute un gros titre, une note ou des fichiers, puis relie-les</p>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script src="core.js"></script>
+  <script src="study.js"></script>
+  <script src="noeuds.js"></script>
+</body>
+</html>

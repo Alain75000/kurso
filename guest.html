@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Kurso – Accueil</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500&display=swap" rel="stylesheet">
+  <meta name="theme-color" content="#1c1c1c">
+  <script src="theme.js"></script>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app">
+    <aside class="side">
+      <a class="side__logo" href="guest.html"><img src="kurso.png" alt="Kurso" width="273" height="56"></a>
+      <nav class="side__nav" aria-label="Navigation principale">
+        <a href="guest.html" aria-current="page">Accueil</a>
+        <a href="cours.html">Mes cours</a>
+        <a href="importer.html">Importer</a>
+        <a href="revisions.html">Révisions</a>
+        <a href="reviser.html">À réviser</a>
+        <a href="agenda.html">Agenda</a>
+        <a href="focus.html">Focus</a>
+        <a href="tableau.html">Tableau</a>
+        <a href="noeuds.html">Nœuds</a>
+        <a href="reglages.html">Réglages</a>
+      </nav>
+      <div class="side__foot">
+        <span>Mode invité</span>
+        <a href="login.html">Se déconnecter</a>
+      </div>
+    </aside>
+
+    <main class="main">
+      <header class="page-head">
+        <div>
+          <h1 id="hello">Bienvenue sur Kurso</h1>
+          <p class="lead">Range tes cours par matière, passe-les en version numérique et prépare tes révisions. Tout reste enregistré dans ce navigateur.</p>
+        </div>
+        <div class="page-actions">
+          <a class="btn" href="reviser.html">Réviser</a>
+          <a class="btn btn--ghost" href="importer.html">Importer un cours</a>
+          <a class="btn btn--ghost" href="revisions.html">Nouvelle fiche</a>
+        </div>
+      </header>
+
+      <div class="tiles" id="tiles"></div>
+
+      <div class="two">
+        <section>
+          <h2 class="section-title">Cartes révisées cette semaine</h2>
+          <div id="week"></div>
+        </section>
+        <section>
+          <h2 class="section-title">Prochaines échéances <a href="agenda.html">Agenda</a></h2>
+          <div id="deadlines"></div>
+        </section>
+      </div>
+
+      <h2 class="section-title">Matières</h2>
+      <div class="grid" id="subjects"></div>
+
+      <h2 class="section-title">Derniers cours ajoutés <a href="cours.html">Tout voir</a></h2>
+      <div id="recent-courses"></div>
+
+      <h2 class="section-title">Dernières fiches de révision <a href="revisions.html">Tout voir</a></h2>
+      <div id="recent-fiches"></div>
+    </main>
+  </div>
+
+  <script src="core.js"></script>
+  <script src="study.js"></script>
+  <script src="home.js"></script>
+</body>
+</html>
