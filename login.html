@@ -55,13 +55,6 @@
       </div>
     </div>
   </main>
-
-  <!-- Popup : connexion en développement -->
-  <div class="toast" id="toast" role="status" aria-live="polite" hidden>
-    <span>Site de démonstration. ne renseignez aucune information personelle, confidentielle ou sensible. </span>
-    <button class="toast__close" type="button" aria-label="Fermer">&times;</button>
-  </div>
-
   <script>
     const form = document.getElementById('login-form');
     const idInput = document.getElementById('identifier');
@@ -77,23 +70,6 @@
       if (ok) location.href = 'guest.html';
       else err.hidden = false;
     });
-
-    // Popup « en développement » (bas à droite)
-    const toast = document.getElementById('toast');
-    let toastTimer;
-    const showToast = () => {
-      toast.hidden = false;
-      requestAnimationFrame(() => toast.classList.add('is-visible'));
-      clearTimeout(toastTimer);
-      toastTimer = setTimeout(hideToast, 18000);
-    };
-    const hideToast = () => {
-      toast.classList.remove('is-visible');
-      setTimeout(() => { toast.hidden = true; }, 200);
-    };
-    toast.querySelector('.toast__close').addEventListener('click', hideToast);
-    showToast();
-    form.addEventListener('click', showToast);
 
     // Accès invité
     const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
