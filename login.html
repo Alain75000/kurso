@@ -57,7 +57,7 @@
 
   <!-- Popup : connexion en développement -->
   <div class="toast" id="toast" role="status" aria-live="polite" hidden>
-    <span>Connexion en développement. Utilise l'accès invité en attendant.</span>
+    <span>Site de démonstration. ne renseignez aucune information personelle, confidentielle ou sensible. </span>
     <button class="toast__close" type="button" aria-label="Fermer">&times;</button>
   </div>
 
@@ -84,7 +84,7 @@
       toast.hidden = false;
       requestAnimationFrame(() => toast.classList.add('is-visible'));
       clearTimeout(toastTimer);
-      toastTimer = setTimeout(hideToast, 6000);
+      toastTimer = setTimeout(hideToast, 18000);
     };
     const hideToast = () => {
       toast.classList.remove('is-visible');
