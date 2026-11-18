@@ -214,21 +214,3 @@ body {
 .toast__close:hover { color: var(--text, #fff); }
 .toast__close:focus-visible { outline: 1px solid #8a8a8a; }
 @media (max-width: 480px) { .toast { left: 16px; right: 16px; max-width: none; } }
-
-/* Animation du logo après « Guest login » */
-.panel { transition: opacity .35s ease, transform .35s ease; }
-.login.is-leaving .panel { opacity: 0; transform: translateY(10px); pointer-events: none; }
-.login.is-leaving .login__logo { animation: logo-enter 15s cubic-bezier(.4, 0, .2, 1) forwards; }
-
-@keyframes logo-enter {
-  0%   { transform: scale(1);    filter: brightness(1);   opacity: 1; }
-  35%  { transform: scale(1.12); filter: brightness(1.7); opacity: 1; }
-  100% { transform: scale(1.35); filter: brightness(2);   opacity: 0; }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .panel { transition: none; }
-  .login.is-leaving .login__logo { animation: none; }
-}
-/* Logo clair : inversé sur les thèmes clairs pour rester lisible */
-html[data-scheme="light"] .login__logo { filter: invert(1) brightness(.35); }
